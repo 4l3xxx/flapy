@@ -7,7 +7,8 @@
   const W = canvas.width;
   const H = canvas.height;
   const GROUND_H = 60;
-  const SKY_H = H - GROUND_H;
+  const ROOF_H = 40; // atap untuk mencegah cheat lewat atas
+  const SKY_H = H - GROUND_H; // area langit hingga sebelum tanah (atap digambar di atas)
 
   // Game tuning
   const GRAVITY = 0.5;
@@ -82,6 +83,12 @@
     birdVy += GRAVITY;
     birdY += birdVy;
 
+    // Roof collision (atap)
+    if (birdY - BIRD_R <= ROOF_H) {
+      birdY = ROOF_H + BIRD_R;
+      gameOver();
+    }
+
     // Ground collision
     if (birdY + BIRD_R >= SKY_H) {
       birdY = SKY_H - BIRD_R;
@@ -151,6 +158,15 @@
     ctx.fillStyle = '#c18f5a';
     for (let x = 0; x < W; x += 20) {
       ctx.fillRect(x, SKY_H, 14, 8);
+    }
+  }
+
+  function drawRoof() {
+    ctx.fillStyle = '#8b5a2b';
+    ctx.fillRect(0, 0, W, ROOF_H);
+    ctx.fillStyle = '#c18f5a';
+    for (let x = 0; x < W; x += 18) {
+      ctx.fillRect(x, ROOF_H - 8, 12, 6);
     }
   }
 
@@ -242,6 +258,7 @@
     drawPipes();
     drawBird();
     drawGround();
+    drawRoof();
     drawScore();
     drawUI();
   }
@@ -273,4 +290,3 @@
   resetGame();
   requestAnimationFrame(loop);
 })();
-
