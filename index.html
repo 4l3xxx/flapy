@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flappy Bird Clone (Canvas)</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        background: #87CEEB; /* langit */
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, sans-serif;
+      }
+      .wrap {
+        height: 100%;
+        display: grid;
+        place-items: center;
+      }
+      canvas {
+        background: linear-gradient(#87CEEB, #bfe7ff);
+        border: 2px solid #1e90ff33;
+        border-radius: 8px;
+        box-shadow: 0 6px 18px #00000022;
+        image-rendering: pixelated;
+      }
+      .hint {
+        position: fixed;
+        bottom: 10px;
+        color: #0b3d91;
+        font-size: 12px;
+        opacity: 0.8;
+        user-select: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <canvas id="game" width="480" height="640" aria-label="Flappy Bird Clone"></canvas>
+    </div>
+    <div class="hint">Kontrol: Spasi/Klik/Touch untuk terbang · R untuk restart</div>
+    <script src="src/main.js"></script>
+  </body>
+  </html>
+
